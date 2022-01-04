@@ -12,24 +12,26 @@ class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         
-        if(list1==NULL)
-        {
-            return list2;
-        }
-        if(list2==NULL)
-        {
-            return list1;
-        }
-        ListNode *he = list1->val > list2->val ? list2 : list1;
-        
-        if(list1->val <= list2->val)
-        {
-            he->next = mergeTwoLists(list1->next,list2); 
-        }
-        else{
-            he->next = mergeTwoLists(list1,list2->next);
-        }
-      
-        return he;
+        ListNode *head = new ListNode(0);
+		ListNode *temp = head;
+
+		while (list2 && list1){
+			if (list1->val <= list2->val){
+				temp->next = list1;                
+				list1 = list1->next;
+			}
+			else{
+				temp->next = list2;
+				list2 = list2->next;
+			}
+			temp = temp->next;
+		}
+		if (list1){
+			temp->next = list1;
+		}
+		else if (list2){
+			temp->next = list2;
+		}
+		return head->next;
     }
 };
