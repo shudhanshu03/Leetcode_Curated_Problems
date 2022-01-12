@@ -16,14 +16,14 @@ public:
             return;
         }
         
-        solve(i+1,temp,res,candidates,target);
+        
         
         temp.push_back(candidates[i]);
         
         solve(i,temp,res,candidates,target-candidates[i]);
         
         temp.pop_back();
-        
+        solve(i+1,temp,res,candidates,target);
         
     }
     
