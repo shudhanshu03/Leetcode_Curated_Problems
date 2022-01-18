@@ -22,8 +22,8 @@ public:
                 s.pop();
               }
             
-            reverse(dum.begin(),dum.end());
-            for(int i=0;i<dum.size();i++)
+    
+            for(int i=dum.size()-1;i>=0;i--)
             {
                 s.push(dum[i]);
             }
