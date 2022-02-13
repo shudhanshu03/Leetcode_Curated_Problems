@@ -23,7 +23,7 @@ public:
     LRUCache(int capacity) {
         cap = capacity;
         head->next = tail;
-        tail->prev = head;
+        tail->prev = tail;
     }
     void addnode(node* newnode)
     {
