@@ -2,23 +2,27 @@ class Solution {
 public:
     int deleteAndEarn(vector<int>& nums) {
         
+        int n = nums.size();
+        int maxe = -1;
+        for(int i=0;i<n;i++)
+        {
+            maxe = max(maxe,nums[i]);
+        }
         
-        int sums[10005];
-        memset(sums,0,sizeof(sums));
-        for(int i=0;i<nums.size();++i)
+        vector<int>sum(maxe+1,0);
+        vector<int>dp(maxe+1,0);
+        for(int i=0;i<n;i++)
         {
-            sums[nums[i]]+=nums[i];
+            sum[nums[i]]+=nums[i];
         }
- 
-        int dp[10005];
-        dp[1]=sums[1];
-        dp[2]=max(sums[1],sums[2]);
- 
-        for(int i=3;i<10005;++i)
+        
+        dp[1] = sum[1];
+        for(int i=2;i<=maxe;i++)
         {
-            dp[i]=max(sums[i]+dp[i-2],dp[i-1]);
+            dp[i] = max(dp[i-2]+sum[i],dp[i-1]);
         }
- 
-        return max(dp[10004],dp[10003]);
+        return max(dp[maxe],dp[maxe-1]);
+        
+        
     }
 };
