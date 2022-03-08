@@ -13,7 +13,6 @@ public:
         
         ListNode *slow = head;
         ListNode *fast = head;
-        int flag =1;
         while(fast && fast->next)
         {
             
