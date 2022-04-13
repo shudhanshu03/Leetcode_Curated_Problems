@@ -1,48 +1,31 @@
 class Solution {
 public:
+    
+    void dfs(int i, int j , int m , int n , vector<vector<char>>&grid)
+    {
+        if(i>=m || i<0 || j>=n || j<0 || grid[i][j]=='0')
+        {
+            return;
+        }
+        grid[i][j]='0';
+        dfs(i+1,j,m,n,grid);
+        dfs(i-1,j,m,n,grid);
+        dfs(i,j+1,m,n,grid);
+        dfs(i,j-1,m,n,grid);
+    }
+    
     int numIslands(vector<vector<char>>& grid) {
         int c = 0;
-        if(grid.size()==0)
+        int m = grid.size();
+        int n = grid[0].size();
+        for(int i=0;i<m;i++)
         {
-            return 0;
-        }
-        vector<vector<int>>dir = {{0,1},{0,-1},{1,0},{-1,0}};
-        int n = grid.size();
-        int m = grid[0].size();
-        queue<pair<int,int>>q;
-        for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<m;j++)
+            for(int j=0;j<n;j++)
             {
                 if(grid[i][j]=='1')
                 {
                     c++;
-                    
-                    
-                    q.push({i,j});
-                    
-                    while(q.empty()==false)
-                    {
-                        auto qq  = q.front();
-                        q.pop();
-                        int ii = qq.first;
-                        int jj = qq.second;
-                        
-                        if(grid[ii][jj]=='1')
-                        {
-                            grid[ii][jj]='0';
-                            for(auto di:dir)
-                            {
-                                int a = di[0]+ii;
-                                int b = di[1]+jj;
-                                
-                                if(a>=0 && a<n && b>=0 && b<m)
-                                {
-                                    q.push({a,b});
-                                }
-                            }
-                        }
-                    }
+                    dfs(i,j,m,n,grid);
                 }
             }
         }
