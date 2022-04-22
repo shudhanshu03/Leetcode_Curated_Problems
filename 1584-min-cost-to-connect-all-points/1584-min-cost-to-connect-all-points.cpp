@@ -52,12 +52,18 @@ public:
             parent[i]=i;
         }
         int res = 0;
+        int c = 0;
         for(auto it:graph)
         {
             if(find(it[1],parent)!=find(it[2],parent))
             {
+                c++;
                 res+=it[0];
                 unionn(it[1],it[2],rank,parent);
+                if(c>=n-1)
+                {
+                    break;
+                }
             }
         }
         return res;
