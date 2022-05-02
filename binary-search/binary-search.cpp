@@ -12,10 +12,10 @@ public:
             }
             else if(nums[mid]<target)
             {
-                i++;
+                i = mid+1;
             }
             else{
-                j--;
+                j = mid-1;
             }
         }
         return -1;
