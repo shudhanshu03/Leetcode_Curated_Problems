@@ -1,53 +1,50 @@
 class Solution {
 public:
-    
-    bool isOk(vector<int>&weights, int days , int tres)
+    bool isValid(vector<int>&weights,int days , int cap)
     {
-        int sum = 0;
+        int s = 0;
         int c = 1;
         
         for(auto i:weights)
         {
-            sum+=i;
-            
-            if(sum > tres)
+            s+=i;
+            if(s>cap)
             {
-                sum = i;
                 c++;
-                
+                s = i;
             }
-            if(c > days)
+            if(c>days)
             {
                 return false;
             }
-            
         }
         return true;
     }
+    
     int shipWithinDays(vector<int>& weights, int days) {
-        int s = 0;
-        int mind = INT_MIN;
-        for(auto i:weights)
+        int l = INT_MIN;
+        int h = 0;
+        
+        for(int i=0;i<weights.size();i++)
         {
-            s+=i;
-            mind = max(mind,i);
+            l = max(l,weights[i]);
+            h+=weights[i];
         }
-        int l = mind;
-        int h = s;
         int res;
         while(l<=h)
         {
-            int acceptedDays = (l+h) >> 1;
+            int mid = (l+h)>>1;
             
-            if(isOk(weights,days,acceptedDays))
+            if(isValid(weights,days,mid))
             {
-                res = acceptedDays;
-                h = acceptedDays-1;
+                res = mid;
+                h = mid-1;
             }
             else{
-                l = acceptedDays+1;
+                l = mid+1;
             }
         }
         return res;
+        
     }
 };
