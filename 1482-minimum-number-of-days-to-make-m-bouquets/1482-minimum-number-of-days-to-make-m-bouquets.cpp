@@ -40,18 +40,19 @@ public:
             h = max(h,bloomDay[i]);
         }
         int res;
-        while(l<h)
+        while(l<=h)
         {
             int mid = l+(h-l)/2;
             
             if(isValid(bloomDay,mid,k,m))
             {
-                h = mid;
+                res = mid;
+                h = mid-1;
             }
             else{
                 l = mid+1;
             }
         }
-        return l;
+        return res;
     }
 };
