@@ -14,7 +14,7 @@ public:
                ans = mid;
                 break;
             }
-            else if(arr[mid]>arr[mid-1])
+            else if(arr[mid]<arr[mid+1])
             {
                 i = mid;
             }
