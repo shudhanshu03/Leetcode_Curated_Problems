@@ -18,7 +18,7 @@ public:
             return dp[n][m] = 1+help(n-1,m-1,text1,text2,dp);
         }
         else{
-            return dp[n][m]=max(0 + help(n-1,m,text1,text2,dp),0 + help(n,m-1,text1,text2,dp));
+            return dp[n][m]=max(help(n-1,m,text1,text2,dp),help(n,m-1,text1,text2,dp));
         }
     }
     
