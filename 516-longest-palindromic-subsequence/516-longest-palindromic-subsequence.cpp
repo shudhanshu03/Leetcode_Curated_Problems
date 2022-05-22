@@ -23,7 +23,7 @@ public:
     int longestPalindromeSubseq(string s) {
         string s1 = s;
         string s2 = s1;
-        reverse(s2.begin(),s2.end());
+        reverse(s2.begin(),s2.end()); // Key Step
         int n = s1.length();
         int m = s2.length();
         vector<vector<int>>dp(n,vector<int>(m,-1));
