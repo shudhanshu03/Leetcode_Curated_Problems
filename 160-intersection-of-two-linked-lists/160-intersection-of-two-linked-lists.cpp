@@ -5,7 +5,6 @@ public:
         ListNode *temp=headA, *temp1=headB;
         int a=0,b=0;
         
-        
         while(temp!=NULL && temp1!=NULL){
             temp=temp->next;
             temp1=temp1->next;
