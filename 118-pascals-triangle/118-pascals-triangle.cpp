@@ -13,8 +13,6 @@ public:
             {
                 res[i][j] = res[i-1][j-1]+res[i-1][j];
             }
-            
-            
         }
         return res;
         
