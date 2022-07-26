@@ -4,9 +4,9 @@ public:
 	{
 	if(i<0 or j<0 or i>=grid.size() or j>=grid[0].size())return 0;
 	if(grid[i][j]==2 or grid[i][j]==0)return 0;
-	//mark visited as 2
+	
 	grid[i][j]=2;
-	//dfs calls to count the area
+	
 return 1+dfs(grid,i+1,j)+dfs(grid,i,j+1)+dfs(grid,i-1,j)+dfs(grid,i,j-1);
 
 	}
